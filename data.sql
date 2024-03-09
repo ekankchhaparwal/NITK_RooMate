@@ -159,3 +159,7 @@ VALUES
 ('Maya Lopez', 'student48@example.com', '1112223333', 'R048', 'F', 'S10048'),
 ('James Martinez', 'student49@example.com', '6667778888', 'R049', 'M', 'S10049'),
 ('Harper Brown', 'student50@example.com', '2223334444', 'R050', 'F', 'S10050');
+
+/* Sample data for AVAILABLE_ROOM table */
+
+INSERT INTO AVAILABLE_ROOM (ROOM_ID, STUDENT_ID, ROOM_STATUS, DESCRIPTION) SELECT ROOM_ID, STUDENT_ID, 'Y','null' FROM STUDENT;
