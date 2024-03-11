@@ -7,7 +7,7 @@ router.post('/login', (req, res) => {
     const email = req.body.email;
     const givenPassword = req.body.password;
 
-    const checkQuery = `SELECT password FROM student WHERE email = ${email};`;
+    const checkQuery = `SELECT passcode FROM student WHERE email = ${email};`;
     
 
     connection.query(checkQuery, (err, results) => {
