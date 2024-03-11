@@ -104,8 +104,6 @@ VALUES
 ('student49@example.com', 'password49'),
 ('student50@example.com', 'password50');
 
-/* Sample data for STUDENT table */
-/* Sample data for STUDENT table */
 
 INSERT INTO STUDENT (NAME, EMAIL, CONTACT_NUMBER, ROOM_ID, GENDER, STUDENT_ID)
 VALUES 
