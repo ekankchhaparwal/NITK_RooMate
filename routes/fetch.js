@@ -6,8 +6,7 @@ router.post('/', (req, res) => {
     const email = req.body.email;
 
     let filterQuery = `
-        SELECT 
-            STUDENT.ROOM_ID, 
+        SELECT  
             STUDENT.STUDENT_ID, 
             ROOM.BUILDING_NAME, 
             ROOM.FLOOR_NO, 
