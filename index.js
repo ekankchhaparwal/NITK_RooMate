@@ -3,16 +3,25 @@ const bodyParser =  require('body-parser');
 const fs = require('fs');
 const path = require('path'); 
 const app = express();
+const session = require('express-session');
 const PORT = 3000;
 
+// Session middleware
+app.use(session({
+  secret: 'changeitinprod!',
+  saveUninitialized: true,
+  cookie: { secure: false } // Change to true if using HTTPS
+}));
 app.use(express.json());
 app.use(bodyParser.json());
 
 const authorization = require('./routes/authorization');
 const register = require('./routes/register')
+const profile = require('./routes/profile')
 
 app.use('/routes/authorization/', authorization);
 app.use('/routes/register/', register);
+app.use('/routes/profile/', profile);
 
 app.get('/', (req, res) => {
     const indexPath = path.join(__dirname, 'frontend/screens/SignUpPage.html');

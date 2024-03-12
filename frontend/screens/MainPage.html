@@ -32,7 +32,7 @@
         <div class="sub-menu-wrap" id="subMenu">
           <div class="sub-menu">
             <div class="user-info">
-              <h4>Anish Tripathi</h4>
+              <h4 id="profileName"> Loading...</h4>
             </div>
             <hr>
 
@@ -198,8 +198,9 @@
     </footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="WebPage.js"></script>
+    
     <script>
+      
       let subMenu= document.getElementById("subMenu");
 
       function toggleMenu(){
@@ -207,5 +208,28 @@
       }
 
     </script>
+
+<script>
+  fetch("http://localhost:3000/routes/profile/name", {
+      method: "GET",
+      headers: {
+          "Content-Type": "application/json",
+      },
+  })
+  .then(response => {
+      if (response.ok) {
+          return response.json();
+      } else {
+          throw new Error('Failed to fetch name');
+      }
+  })
+  .then(data => {
+      const userName = data.name;
+      document.getElementById('profileName').innerText = userName;
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+  </script>
   </body>
 </html>

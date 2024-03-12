@@ -58,28 +58,37 @@ function saveToLocalStorage() {
 
   
   function checkPassword2() {
-    const email = document.getElementById("email-id").value;
-    const password = document.getElementById("password1").value;
-    const message = document.getElementById("message2");
-  
-    const savedEmail = localStorage.getItem("savedEmail");
-    const savedPassword = localStorage.getItem("savedPassword");
-  
-    if (email.length === 0 || password.length === 0) {
-      alert("Email and Password cannot be empty!");
-    //   message.textContent = "";
-      return;
-    }
-  
-    if (email === savedEmail && password === savedPassword) {
-    //   message.textContent = "Email and Password match";
-    //   message.style.backgroundColor = "#1dcd59";
-    //   alert("Login successful!");
-    window.location.href = "../screens/MainPage.html"; // Use assign() method
-    } else {
-      message.textContent = "Email or Password do not match";
-    //   message.style.backgroundColor = "#ff4d4d";
-      // Disable the submit button
-      document.getElementById("submitBtn2").disabled = true;
-    }
+        var email = document.getElementById("email-id").value;
+        var password = document.getElementById("password1").value;
+
+        // Make API call
+        fetch("http://localhost:3000/routes/authorization/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email,
+            passcode: password
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            // If API call is successful, redirect to another page
+            window.location.href = "../screens/MainPage.html";
+        } else {
+            // If API call fails, parse the JSON response and display error message
+            response.json().then(data => {
+              document.getElementById("message2").style.backgroundColor = "red"; 
+                document.getElementById("message2").innerText = "Error: " + data.statusMessage;
+                
+            });
+        }
+    })
+    .catch(error => {
+        // Catch any network errors
+        console.error('Error:', error);
+        document.getElementById("message2").innerText = "Network Error. Please try again.";
+    });
+
   }
