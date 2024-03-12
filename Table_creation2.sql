@@ -1,4 +1,6 @@
 /*Table: ROOM */
+create database RoomExchange;
+use  RoomExchange;
 
 CREATE TABLE ROOM (
     ROOM_ID      VARCHAR(10) NOT NULL,

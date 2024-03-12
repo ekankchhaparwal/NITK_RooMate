@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS files/availableRooms.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+</head>
+<body>
+    <nav>
+      <div class = "main-nav container flex">
+        <div class="search-bar">
+            <input type = "text" id = "search-text" class= "input" placeholder=" Search over 100 rooms">
+            <button class = "search-button"id = "search-button">Search</button>
+        </div>
+        <div class = "nav-links">
+            <ul class = flex>
+                <span><i class="ri-logout-box-r-line"></i></span>
+                <li class = "hover-link nav-item" id = "logout" > Logout</li>
+                
+                
+            </ul>
+        </div>
+        
+      </div>
+    </nav>
+   
+        
+            
+        
+    
+
+<main>
+        
+      
+        
+        
+    
+<div class = "card-container">
+    
+    <div class="student-card">
+        <img src = "../resources/boy.png" id = 'student_card-img'>
+        <div class = "student-description">
+            <h1 id = "name">Student Name</h1>
+                <p>---------------------------</p>
+                <h3 id = "block">Block</h3>
+                
+                <h3 id = "contact">Contact Info</h3>
+            
+
+        </div>
+        <button class = "details" onclick="view()">
+            View Details
+        </button>
+        <button class = "swap" onclick="view2()">
+            Room Swap
+        </button>
+
+        
+
+        
+    </div>
+    <div class="student-card">
+        <img src = "../resources/boy.png" id = 'student_card-img'>
+        <div class = "student-description">
+            <h1 id = "name">Student Name</h1>
+                <p>---------------------------</p>
+                <h3 id = "block">Block</h3>
+                
+                <h3 id = "contact">Contact Info</h3>
+            
+
+        </div>
+        <button class = "../resources/boy.png" onclick="view()">
+            View Details
+        </button>
+        <button class = "swap" onclick="view2()">
+            Room Swap
+        </button>
+
+        
+
+        
+    </div>
+    <div class="student-card">
+        <img src = "../resources/boy.png" id = 'student_card-img'>
+        <div class = "student-description">
+            <h1 id = "name">Student Name</h1>
+                <p>---------------------------</p>
+                <h3 id = "block">Block</h3>
+                
+                <h3 id = "contact">Contact Info</h3>
+            
+
+        </div>
+        <button class = "details" onclick="view()">
+            View Details
+        </button>
+        <button class = "swap" onclick="view2()">
+            Room Swap
+        </button>
+
+        
+
+        
+    </div>
+    <div class="student-card">
+        <img src = "../resources/boy.png" id = 'student_card-img'>
+        <div class = "student-description">
+            <h1 id = "name">Student Name</h1>
+                <p>---------------------------</p>
+                <h3 id = "block">Block</h3>
+                
+                <h3 id = "contact">Contact Info</h3>
+            
+
+        </div>
+        <button class = "details" onclick="view()">
+            View Details
+        </button>
+        <button class = "swap" onclick="view2()">
+            Room Swap
+        </button>
+
+        
+
+        
+    </div>
+</div>
+<div class = 'popup' id = 'popup'>
+    <h1 id = "info" >Room Information</h1>
+    <h3 id = "block">Block</h3>
+    <h3 id = "wing">Wing</h3>
+    <h3 id = "floor">Floor</h3>
+    <h3 id = "room">Room No</h3>
+    <h3 id = "contact">Contact Info</h3>
+    <button class = "close" onclick="closed()">
+        Close
+    </button>
+
+</div>
+
+<div class = 'popup' id = 'popup2'>
+    <h1 id = "info" >Request for room swap has been filed successfully</h1>
+    <button class = "close" onclick="ok()">
+        OK
+    </button>
+
+</div>
+</main>
+
+
+   
+
+<script>
+    
+    let popup = document.getElementById('popup')
+    let popup2 = document.getElementById('popup2')
+
+    function view(){
+        console.log("he");
+
+        popup.classList.add("open-popup");}
+    function closed(){
+        console.log("he");
+
+        popup.classList.remove("open-popup");}
+    function view2(){
+        console.log("he");
+
+        popup2.classList.add("open-popup");}
+    function ok(){
+        console.log("he");
+
+        popup2.classList.remove("open-popup");}
+</script>
+
+</body>
+</html>
