@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const connection = require('./database');
+const connection = require('../database');
 
 
 router.post('/signUp', (req, res) => {
