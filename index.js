@@ -8,25 +8,6 @@ const PORT = 3000;
 app.use(express.json());
 app.use(bodyParser.json());
 
-const cors = require('cors');  // CORS middleware for handling cross-origin requests
-
-// Define whitelist for acceptable origins
-const whitelist = ['http://127.0.0.1:5500'];
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Check if origin is in whitelist
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true)
-    } else {
-      // Reject requests from non-whitelisted origins
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-
-// Apply CORS middleware
-app.use(cors(corsOptions));
-
 const authorization = require('./routes/authorization');
 const register = require('./routes/register')
 
