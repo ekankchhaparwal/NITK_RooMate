@@ -5,7 +5,7 @@ const connection = require('../database');
 router.post('/' , (req, res) => {
     const email = req.body.email;
     const query= `SELECT STUDENT.NAME, STUDENT.EMAIL, STUDENT.CONTACT_NUMBER, STUDENT.STUDENT_ID, STUDENT.GENDER, STUDENT.ROOM_SWAP_AVAILABLE_FLAG,
-    ROOM.BUILDING_NAME, ROOM.ROOM_NUMBER, ROOM.FLOOR_NO, ROOM.WING FROM STUDENT INNER JOIN ROOM ON STUDENT.ROOM_ID = ROOM.ROOM_ID WHERE STUDENT.EMAIL = ?`;
+    ROOM.ROOM_ID, ROOM.BUILDING_NAME, ROOM.FLOOR_NO, ROOM.WING FROM STUDENT INNER JOIN ROOM ON STUDENT.ROOM_ID = ROOM.ROOM_ID WHERE STUDENT.EMAIL = ?`;
     connection.query(query, email, (err, results) => {
         if (err) {
             console.error('Error fetching data:', err);

@@ -5,9 +5,9 @@ const connection = require('../database');
 router.post('/login', (req, res) => {
    
     const email = req.body.email;
-    const givenPassword = req.body.password;
+    const givenPassword = req.body.passcode;
 
-    const checkQuery = `SELECT passcode FROM student WHERE email = ${email};`;
+    const checkQuery = `SELECT passcode FROM authorization WHERE email = "${email}";`;
     
 
     connection.query(checkQuery, (err, results) => {
@@ -16,7 +16,7 @@ router.post('/login', (req, res) => {
             return results;
         } else if (results.length === 0) {
             return res.status(401).json({ status: 'email is invalid' });
-        } else if (givenPassword !== results.password) {
+        } else if (givenPassword !== results[0].passcode) {
             return res.status(401).json({ status: 'Incorrect paasword' });
         }
         

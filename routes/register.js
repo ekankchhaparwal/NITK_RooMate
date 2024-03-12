@@ -2,47 +2,28 @@ const express = require('express')
 const router = express.Router();
 const connection = require('../database');
 
-
-router.post('/signUp', (req, res) => {
-    
-    const studentName = req.body.studentName;
+router.post('/login', (req, res) => {
+   
     const email = req.body.email;
-    const password = req.body.password;
-    const confirmPassword =  req.body.confrimPassword;
-    const contact = req.body.contact;
-    const gender = req.body.gender;
-    
-    const emailQuery = `SELECT * FROM student WHERE email = ${email}`;
+    const givenPassword = req.body.passcode;
 
-    connection.query(emailQuery, (err, results) => {
-       
+    const checkQuery = `SELECT passcode FROM authorization WHERE email = "${email}";`;
+    
+
+    connection.query(checkQuery, (err, results) => {
         if (err) {
             console.error('Error fetching data:', err);
             return results;
+        } else if (results.length === 0) {
+            return res.status(401).json({ status: 'email is invalid' });
+        } else if (givenPassword !== results[0].passcode) {
+            return res.status(401).json({ status: 'Incorrect paasword' });
         }
-
-        if (password !== confirmPassword) {
-            return res.status(401).json({ status: 'Passwords do not match' });
-        } 
         
-        if (results.length !== 0) {
-            return res.status(401).json({ status: 'Account already exists' });
-        } 
-
-    });
-
-    
-    const insertQuery = `insert into student values('${studentName}', '${email}', '${password}', '${contact},'${gender}');`;
-
-    
-    connection.query(insertQuery, (err, results) => {
-        if (err) {
-            return results;
-        } else {
-            return res.status(200).json({ status: 'Account created' });
-        }
+        res.status(200).json({ status: 'Login successfull' });
     });
 });
+
 
 
 module.exports = router;
