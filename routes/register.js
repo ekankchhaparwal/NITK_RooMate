@@ -11,7 +11,7 @@ router.post('/signUp', (req, res) => {
     const confirmPassword =  req.body.confrimPassword;
     const contact = req.body.contact;
     const gender = req.body.gender;
-
+    
     const emailQuery = `SELECT * FROM student WHERE email = ${email}`;
 
     connection.query(emailQuery, (err, results) => {
