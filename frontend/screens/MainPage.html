@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="../js/MainPage.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/MainPage.css" />
     <title>Room Exchange| NITK</title>
   </head>
@@ -25,6 +24,7 @@
         <ul class="nav__links" id="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="../screens/availableRooms.html">Room availability </a></li>
+          <li><a href="roomExchangeApplicationPage.html">Swap room request </a></li>
           <li><a href="#feature">Features</a></li>
           <li><a href="#about">About Us</a></li>
         </ul>
@@ -45,13 +45,19 @@
               <p>Room details</p>
               <span></span>
             </a>
-            <a href="#" class="sub-menu-link">
+            <a href="helpAndSupport.html" class="sub-menu-link">
               <p>Help & support</p>
               <span></span>
             </a>
 
           </div>
         </div>
+        <a href="roomRequestMessages.html" >
+          <button type="button" class="icon-button">
+            <span class="material-icons">notifications</span>
+            <span class="icon-button__badge">2</span>
+          </button>
+        </a>
       </div>
     </nav>
 
@@ -62,23 +68,24 @@
     </header>
 
     
-
     <section class="section__container feature__container" id="feature">
-     
+
       <h2 class="section__header"> Features</h2>
       <div class="feature__grid">
         <div class="feature__card">
           <span><i class="ri-file-list-line"></i></span>
           <h4>Room Listings: </h4>
           <p>
-            Enable users to list their current rooms that they want to exchange, including details such as room type, facilities, and any preferences for the desired room.
+            Enable users to list their current rooms that they want to exchange, including details such as room type,
+            facilities, and any preferences for the desired room.
           </p>
         </div>
         <div class="feature__card">
           <span><i class="ri-bookmark-line"></i></span>
           <h4>Booking and confirmation:</h4>
           <p>
-            Facilitate the booking process by allowing users to send exchange requests, confirmations, and manage their bookings through the portal.
+            Facilitate the booking process by allowing users to send exchange requests, confirmations, and manage their
+            bookings through the portal.
           </p>
         </div>
         <div class="feature__card">
@@ -92,21 +99,24 @@
           <span><i class="ri-lock-line"></i></span>
           <h4>Security and Privacy:</h4>
           <p>
-             Ensure the portal has robust security measures in place to protect user data and privacy, such as secure authentication and compliance with data protection regulations.
+            Ensure the portal has robust security measures in place to protect user data and privacy, such as secure
+            authentication and compliance with data protection regulations.
           </p>
         </div>
         <div class="feature__card">
           <span><i class="ri-notification-line"></i></span>
           <h4>Notification system:</h4>
           <p>
-            Notify users about new room listings that match their preferences, messages from other users, and any updates related to their listings or exchanges.
+            Notify users about new room listings that match their preferences, messages from other users, and any updates
+            related to their listings or exchanges.
           </p>
         </div>
         <div class="feature__card">
           <span><i class="ri-feedback-line"></i></span>
           <h4>Feedback:</h4>
           <p>
-            Gather feedback from users to continuously improve the portal and enhance the user experience based on their suggestions and experiences.
+            Gather feedback from users to continuously improve the portal and enhance the user experience based on their
+            suggestions and experiences.
           </p>
         </div>
       </div>

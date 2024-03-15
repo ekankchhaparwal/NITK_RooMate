@@ -25,7 +25,9 @@ document.querySelector('.login form').addEventListener('submit', function(event)
         const studentId = document.querySelector("input[name='txt'][placeholder='Student ID']").value;
         const email = document.querySelector("input[name='email']").value;
         const contactNumber = document.querySelector("input[name='txt'][placeholder='Contact number']").value;
-        const gender = document.querySelector("input[name='txt'][placeholder='Gender']").value;
+        const genderSelect = document.getElementById("gender");
+        const gender = genderSelect.value;
+
 
         // Create a JSON object with form data
         const formData = {

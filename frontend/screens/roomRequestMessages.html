@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Swap room requests</title>
+    <link rel="stylesheet" type="text/css" href="../css/roomRequestMessages.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+</head>
+
+<body>
+    <main class="table" id="customers_table">
+
+        <section class="table__header">
+            <h1>Room swap requests</h1>
+            <div class="input-group">
+                <input type="search" placeholder="Search Rooms...">
+            </div>
+            <div class="navbar">
+                <a href="MainPage.html"><i class="fas fa-home"></i>&nbsp; &nbsp; Home</a>
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Student name</th>
+                        <th> Building name</th>
+                        <th> Wing</th>
+                        <th> Floor number</th>
+                        <th> Room number</th>
+                        <th> Swap request accept</th>
+                        <th> Swap request reject</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nobita</td>
+                        <td> Vindhya</td>
+                        <td> Left</td>
+                        <td> 2 </td>
+                        <td>132</td>
+                        <td><button class="details-accept" onclick="view1()">Accept</button></td>
+                        <td><button class="details-reject" onclick="view2()">Reject</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jaggu</td>
+                        <td> Satpura </td>
+                        <td> Right</td>
+                        <td> 2 </td>
+                        <td>119</td>
+                        <td><button class="details-accept" onclick="view1()">Accept</button></td>
+                        <td><button class="details-reject" onclick="view2()">Reject</button></td>
+                    </tr>
+                    <tr>
+                        <td>Chutki</td>
+                        <td> Himalaya </td>
+                        <td> Right</td>
+                        <td> 1 </td>
+                        <td>B111</td>
+                        <td><button class="details-accept" onclick="view1()">Accept</button></td>
+                        <td><button class="details-reject" onclick="view2()">Reject</button></td>
+                    </tr>
+                    <tr>
+                        <td> Chhota Bheem</td>
+                        <td> Aravali</td>
+                        <td> Left</td>
+                        <td> 0 </td>
+                        <td>7</td>
+                        <td><button class="details-accept" onclick="view1()">Accept</button></td>
+                        <td><button class="details-reject" onclick="view2()">Reject</button></td>
+                    </tr>
+                    <tr>
+                        <td> Raju </td>
+                        <td> Satpura</td>
+                        <td> Right</td>
+                        <td> 1 </td>
+                        <td>45</td>
+                        <td><button class="details-accept" onclick="view1()">Accept</button></td>
+                        <td><button class="details-reject" onclick="view2()">Reject</button></td>
+                    </tr>
+                    <tr>
+                        <td>Kaalia</td>
+                        <td>Vindhya</td>
+                        <td> Left</td>
+                        <td> 1</td>
+                        <td>16</td>
+                        <td><button class="details-accept" onclick="view1()">Accept</button></td>
+                        <td><button class="details-reject" onclick="view2()">Reject</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+        function view1() {
+            alert("Room swap request accepted!!");
+        }
+
+        function view2() {
+            alert("Room swap request rejected!!");
+        }
+        
+    </script>
+
+</body>
+
+</html>

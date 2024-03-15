@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Jost:wght@500&display=swap");
+
 body {
     padding: 0;
     margin: 0;
@@ -13,15 +14,18 @@ body {
 .main {
     width: 350px;
     height: 500px;
-    background:rgb(108, 9, 179);;
+    background: rgb(108, 9, 179);
+    ;
     overflow: hidden;
     border-radius: 10px;
 }
-.main:hover{
+
+.main:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
-    box-shadow: 0 0 10px rgb(127, 14, 208);
+    box-shadow: 0 0 10px black;
 }
+
 #chk {
     display: none;
 }
@@ -47,7 +51,7 @@ label {
 input {
     width: 70%;
     height: 18px;
-    background:white;
+    background: white;
     justify-content: center;
     display: flex;
     margin: 18px auto;
@@ -61,6 +65,7 @@ input {
     transform: scale(1.1);
     transition: transform 0.3s;
 }
+
 .login input:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
@@ -86,7 +91,7 @@ button {
     cursor: pointer;
 }
 
-.main .signup a{
+.main .signup a {
     text-decoration: none;
     color: white;
 }
@@ -94,11 +99,13 @@ button {
 button:hover {
     background-color: #7c51ce;
 }
-.signup button:hover{
+
+.signup button:hover {
     transform: scale(1.1);
     transition: transform 0.1s;
 }
-.login button:hover{
+
+.login button:hover {
     transform: scale(1.1);
     transition: transform 0.1s;
 }
@@ -117,7 +124,7 @@ button:hover {
     transform: scale(.6);
 }
 
-.login a{
+.login a {
     color: white;
     text-decoration: none;
 }
@@ -134,78 +141,71 @@ button:hover {
     transform: scale(.6);
 }
 
-.remember-me {
-    margin-top: 0px;
-    display: flex;
-    justify-content: space-between;
-    /* font-size: 0.9em; */
-    color: #573b8a;
-    padding-right: 30px;
-    text-align: left;
-}
 
-.remember-me label {
-    /* display: flex; */
-    align-items: center;
-    font-size: 14.5px;
-    margin-top: -9px;
-    margin-left: 40px;
-    padding-right: 10px;
-    font-weight: bold;
-    white-space: nowrap;
-}
-.remember-me a:hover{
-    color: #2e1066;
-    transform: scale(1.1);
-    transition: transform 0.1s;
-}
-.remember-me label:hover{
-    color: #2e1066;
-    transform: scale(1.1);
-    transition: transform 0.1s ;
-}
-
-.remember-me a {
-    align-items: center;
-    padding-right: 5px;
-    padding-top: 8px;
-    font-size: 14.5px;
-    color: #573b8a;
-    margin-top: 0px;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.remember-me input[type="checkbox"] {
-    margin-right: 5px;
-}
 
 .signup form .user-details {
-        max-height: 180px;
-        overflow-y: scroll;
-    }
-    .user-details ::-webkit-scrollbar {
-        width: 0;
-    }
+    max-height: 180px;
+    overflow-y: scroll;
+}
 
-    .signup form p{
-        margin-left: 30px;
-        margin-bottom:0px;
-        padding-bottom: 0px;
-        margin-top: 0px;
-        color: white;
-        font-weight: 200px;
-        font-family: 'Jost', sans-serif;
+.user-details ::-webkit-scrollbar {
+    width: 0;
+}
 
-    }
-    .login form p{
-        margin-left: 40px;
-        margin-bottom:100px;
-        padding-bottom: 50px;
-        margin-top: -40px;
-        color: black;
-        font-weight: 300px;
-        font-family: 'Jost', sans-serif;
+.signup form p {
+    margin-left: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    color: white;
+    font-weight: 200px;
+    font-family: 'Jost', sans-serif;
 
-    }
+}
 
+.login form p {
+    margin-left: 40px;
+    margin-bottom: 100px;
+    padding-bottom: 50px;
+    margin-top: -40px;
+    color: black;
+    font-weight: 300px;
+    font-family: 'Jost', sans-serif;
+
+}
+
+
+.user-details label, select {
+    display: inline-block;
+    /* vertical-align: middle; */
+    margin-right: 5px;
+    margin-top: 0px;
+  }
+
+  .user-details label{
+    font-size: 17px;
+    margin-top: 0px;
+    margin-left: 40px;
+  }
+
+  .user-details select{
+    /* font-size: 20px; */
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+
+  #gender{
+    background: white;
+    padding: 10px;
+    padding-right: 127px;
+    margin-left: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #message {
+    margin-left: 40px;
+    font-family: 'Jost', sans-serif;
+  }
