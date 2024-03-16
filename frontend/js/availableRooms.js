@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return response.json();
       })
       .then(data => {
+        console.log(data);
         renderStudentCards(data);
       })
       .catch(error => {
@@ -73,6 +74,11 @@ function createStudentCard(student) {
     var swapButton = document.createElement('button');
     swapButton.classList.add('swap');
     swapButton.textContent = 'Room Swap';
+    
+    swapButton.addEventListener('click', function() {
+      sendRoomSwapRequest(student);
+    });
+
     detailsButton.addEventListener('click', function() {
         view(student);
     });
@@ -88,10 +94,39 @@ function createStudentCard(student) {
     return card;
 }
 
+function sendRoomSwapRequest(student) {
+  const check = confirm('Are you sure you want to request a room swap?');
+  console.log(student);
+  console.log('hello');
+  if(check) {
+    fetch('http://localhost:3000/routes/swapRequest/sendRequestToStudent', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(student),
+  })
+  .then(response => {
+      if (response.ok) {
+          // Show success message
+          alert('Request for room swap has been successfully sent to the student.');
+      } else {
+          // Handle error response
+          alert('Error sending room swap request. Please try again later.');
+      }
+  })
+  .catch(error => {
+      console.error('Error:', error);
+      alert('Error sending room swap request. Please try again later.');
+  });
+  }
+  
+}
+
 
 function renderStudentCards(apiResponse) {
     var container = document.querySelector('.card-container');
-    
+    console.log(apiResponse);
     // Clear existing cards
     container.innerHTML = '';
     

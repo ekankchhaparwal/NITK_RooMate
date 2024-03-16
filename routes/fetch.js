@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
             STUDENT.GENDER, 
             ROOM.BUILDING_NAME, 
             ROOM.FLOOR_NO, 
+            ROOM.ROOM_ID,
             ROOM.WING, 
             ROOM.ROOM_NUMBER
         FROM 
@@ -80,10 +81,10 @@ router.post('/', (req, res) => {
             AVAILABLE_ROOM ON ROOM.ROOM_ID = AVAILABLE_ROOM.ROOM_ID 
         WHERE 
             STUDENT.GENDER = (SELECT GENDER FROM STUDENT WHERE EMAIL = ?) AND 
-             
+            STUDENT.EMAIL <> ? AND
             AVAILABLE_ROOM.ROOM_STATUS = 'Y'`;
 
-    let filterParams = [email];
+    let filterParams = [email,email];
 
     if (req.body.building_name) {
         filterQuery += ' AND ROOM.BUILDING_NAME = ?';
@@ -99,8 +100,7 @@ router.post('/', (req, res) => {
         filterQuery += ' AND ROOM.WING = ?';
         filterParams.push(req.body.wing);
     }
-    console.log(filterQuery);
-    console.log(filterParams);
+
     connection.query(filterQuery, filterParams, (err, filteredRoomResult) => {
         if (err) {
             console.error('Error fetching filtered room data:', err);
@@ -108,7 +108,13 @@ router.post('/', (req, res) => {
             return;
         }
 
-        res.status(200).json(filteredRoomResult);
+        
+        const filteredData = filteredRoomResult.filter(item => {
+            console.log('Item EMAIL:', item['EMAIL']);
+            console.log('Email to exclude:', email);
+            return item['EMAIL'] !== email;
+        });
+        res.status(200).json(filteredData);
     });
 });
 

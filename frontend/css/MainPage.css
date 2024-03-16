@@ -183,8 +183,9 @@ nav {
 
 
 .header__container h3 {
-    margin-bottom: 2rem;
-    font-size: 3rem;
+    margin-bottom: 2rem; 
+    /* just update the size of  font on home page */
+    font-size: 4rem;
     font-weight: 800;
     line-height: 6rem;
     font-family: var(--header-font);
@@ -471,6 +472,13 @@ nav {
         background-color: transparent;
     }
 
+    .nav__links a {
+        color: black;
+        transition: 0.3s;
+        font-weight:600;
+        font-size: 17px;
+    }
+
     .booking__container form {
         max-width: 100%;
         grid-template-columns: repeat(4, 1fr);
@@ -629,3 +637,4 @@ nav {
     border-radius: 50%;
   }
   
+ 
