@@ -68,10 +68,7 @@ CREATE TABLE AVAILABLE_ROOM (
     CONSTRAINT AVAILABLE_ROOM_PK PRIMARY KEY (ROOM_ID, STUDENT_ID)
 );
 
-/*comment on table "AVAILABLE_ROOM" is 'Available Room table tracks the rooms that are currently available for new allocations or swaps';*/
 
-
-/*Table: SWAP_REQUEST*/
 
 CREATE TABLE SWAP_REQUEST (
     REQUEST_ID            INT AUTO_INCREMENT PRIMARY KEY,

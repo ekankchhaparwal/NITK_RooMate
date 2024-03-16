@@ -118,4 +118,149 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/swapRequests',(req,res)=>{
+    const email=req.session.user['email'];
+    const query = `
+    SELECT 
+        SR.REQUEST_ID,
+        S.NAME  ,
+        S.EMAIL ,
+        S.CONTACT_NUMBER ,
+        S.GENDER ,
+        S.ROOM_ID ,
+        R.BUILDING_NAME ,
+        R.FLOOR_NO ,
+        R.WING ,
+        R.ROOM_NUMBER 
+    FROM 
+        SWAP_REQUEST SR
+    INNER JOIN 
+        STUDENT S ON SR.REQ_STUDENT_ID = S.STUDENT_ID
+    INNER JOIN 
+        ROOM R ON S.ROOM_ID = R.ROOM_ID
+    WHERE 
+        SR.REQ_TO_STUDENT_ID = (SELECT STUDENT_ID FROM STUDENT WHERE EMAIL = ?)
+        AND SR.CONFIRM_AVAILABILITY = 'PENDING'`;
+
+    connection.query(query,[email],(err,results)=>{
+        if(err){
+            console.error('Error fetching swap requests:',err);
+            res.status(500).send('Error fetching swap requests');
+            return;
+        }
+        res.status(200).json(results);
+    });
+}
+);
+
+router.post('/acceptSwapRequest',(req,res)=>{
+    const swapRequestId=req.body.requestId;
+    
+    connection.beginTransaction((err)=>{
+        if(err){
+            console.error('Error beginning transaction:',err);
+            res.status(500).send('Error rejecting swap request');
+            return;
+        }
+        const query1=`UPDATE SWAP_REQUEST SET CONFIRM_AVAILABILITY = 'ACCEPTED' WHERE REQUEST_ID = ?`;
+        connection.query(query1,[swapRequestId],(err,results)=>{
+            if(err){
+                return connection.rollback(()=>{
+                    console.error('Error accepting swap request:',err);
+                    res.status(500).send('Error accepting swap request');
+                }
+                );
+            }
+        }
+        );
+        const query2=`SELECT REQ_STUDENT_ID, REQ_TO_STUDENT_ID, REQ_ROOM_ID, REQ_TO_ROOM_ID FROM SWAP_REQUEST WHERE REQUEST_ID = ?`;
+        connection.query(query2,[swapRequestId],(err,results)=>{
+            if(err){
+                return connection.rollback(()=>{
+                    console.error('Error fetching swap request:',err);
+                    res.status(500).send('Error accepting swap request');
+                }
+                );
+            }
+            const reqStudentId=results[0].REQ_STUDENT_ID;
+            const reqToStudentId=results[0].REQ_TO_STUDENT_ID;
+            const reqRoomId=results[0].REQ_ROOM_ID;
+            const reqToRoomId=results[0].REQ_TO_ROOM_ID;
+            const query3=`UPDATE STUDENT SET ROOM_ID = ? WHERE STUDENT_ID = ?`;
+            connection.query(query3,[reqToRoomId,reqStudentId],(err,results)=>{
+                if(err){
+                    return connection.rollback(()=>{
+                        console.error('Error updating student room:',err);
+                        res.status(500).send('Error accepting swap request');
+                    }
+                    );
+                }
+            }
+            );
+            const query4=`UPDATE STUDENT SET ROOM_ID = ? WHERE STUDENT_ID = ?`;
+            connection.query(query4,[reqRoomId,reqToStudentId],(err,results)=>{
+                if(err){
+                    return connection.rollback(()=>{
+                        console.error('Error updating student room:',err);
+                        res.status(500).send('Error accepting swap request');
+                    }
+                    );
+                }
+            }
+            );
+            const query5=`DELETE FROM AVAILABLE_ROOM WHERE ROOM_ID IN (?,?)`;
+            connection.query(query5,[reqRoomId,reqToRoomId],(err,results)=>{
+                if(err){
+                    return connection.rollback(()=>{
+                        console.error('Error deleting rooms:',err);
+                        res.status(500).send('Error accepting swap request');
+                    }
+                    );
+                }
+            }
+            );
+
+            const query6 = `delete from SWAP_REQUEST WHERE REQ_TO_STUDENT_ID = ?`
+            connection.query(query6,[reqToStudentId],(err,results)=>{
+                if(err){
+                    return connection.rollback(()=>{
+                        console.error('Error deleting rooms:',err);
+                        res.status(500).send('Error accepting swap request');
+                    }
+                    );
+                }
+            });
+        }
+        );
+        connection.commit((err)=>{
+            if(err){
+                return connection.rollback(()=>{
+                    console.error('Error committing transaction:',err);
+                    res.status(500).send('Error accepting swap request');
+                }
+                );
+            }
+            res.status(200).send('Swap request accepted');
+        }
+        );
+    }
+    );
+}
+);
+
+router.post('/rejectSwapRequest',(req,res)=>{
+    const swapRequestId=req.body['requestId'];
+    console.log(swapRequestId);
+    const query=`UPDATE SWAP_REQUEST SET CONFIRM_AVAILABILITY = 'REJECTED' WHERE REQUEST_ID = ?`;
+    connection.query(query,[swapRequestId],(err,results)=>{
+        if(err){
+            console.error('Error rejecting swap request:',err);
+            res.status(500).send('Error rejecting swap request');
+            return;
+        }
+        res.status(200).send('Swap request rejected');
+    });
+}
+);
+
 module.exports = router;
