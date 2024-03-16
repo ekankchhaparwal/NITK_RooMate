@@ -33,9 +33,59 @@
         <button type="submit" class="details" onclick="view()">Swap request</button>
     </section>
     <script>
-        function view() {
-            confirm("Are you sure?");
-        }
+document.addEventListener('DOMContentLoaded', () => {
+  const email = 'example@example.com'; // Replace with the actual email
+
+  fetch(`http://localhost:3000/routes/register/checkStudentInAvailableRooms`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.result.length > 0) {
+        const button = document.querySelector('.details');
+        button.disabled = true;
+        button.innerText = 'Room Swap Request Already Exists';
+      } 
+    })
+    .catch((error) => {
+      console.error('There was a problem with your fetch operation:', error);
+    });
+});
+
+function view() {
+    const confirmation = confirm('Are you sure?');
+    if (confirmation) {
+        fetch(`http://localhost:3000/routes/register/addPersonToAvailableRooms`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ addToAvailableRooms: true }),
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            alert(data.message);
+            console.log(data); // Handle the response data as needed
+        })
+        .catch((error) => {
+            alert('Error adding student to available rooms.');
+            console.error('There was a problem with your fetch operation:', error);
+        });
+    } else {
+        alert('Confirmation not received.');
+        console.log('Confirmation not received.');
+    }
+}
+
+
     </script>
 
 </body>
