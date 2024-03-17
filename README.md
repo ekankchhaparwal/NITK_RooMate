@@ -1,1 +1,1 @@
-# NITK_RooMate
+# Room Exchange System
