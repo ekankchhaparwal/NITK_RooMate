@@ -5,6 +5,7 @@
 - [Name of Contributor](link-to-profile) - Description of their contribution.
 - [Name of Contributor](link-to-profile) - ''
 - [Name of Contributor](link-to-profile) - ''
+
 Last but not least, we want to thank the IET community for their encouragement, support, and understanding during the hours spent on the project.
 
 We are truly grateful for the contributions and support received from everyone mentioned above, without which the Room Exchange System would not have been possible.
