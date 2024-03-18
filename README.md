@@ -1,55 +1,81 @@
 # Room-Exchange-System
 
-A web application that seeks to develop a user-friendly room exchange system.
+## Acknowledgements
 
-## Table of Contents
+- [Name of Contributor](link-to-profile) - Description of their contribution.
+- [Name of Contributor](link-to-profile) - ''
+- [Name of Contributor](link-to-profile) - ''
+Last but not least, we want to thank the IET community for their encouragement, support, and understanding during the hours spent on the project.
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
-- [Credits](#credits)
+We are truly grateful for the contributions and support received from everyone mentioned above, without which the Room Exchange System would not have been possible.
 
-## Installation
+## Aim
 
-1. Clone the repository
-2. Navigate to the project directory
-3. Install dependencies: npm install express, express-session, mysql2
-4. Set up the database
-5. Start the application
+The Room-Exchange-System aims to provide a platform for individuals seeking to exchange rooms, facilitating the process of finding suitable room exchange partners.
 
-## Usage
+## Introduction
 
-1. Sign up for an account or log in if you already have one.
-2. Browse available room listings or create a new listing if you want to exchange your room.
-3.  Following this, you can anticipate responses from interested individuals and subsequently decide with whom to exchange rooms.
+The Room-Exchange-System is a dynamic and user-friendly web application designed to ease the process of finding room exchange opportunities.
 
-## Configure
+Finding suitable accommodation can be a daunting task, especially when faced with the challenges of compatibility with potential roommates. Traditional methods of searching for roommates or listing available rooms often lack the flexibility and efficiency required to meet the needs of individuals seeking room exchanges.
 
-Nothing to configure.
+Our portal addresses these challenges by providing a centralized platform where users can create detailed room listings, browse available listings based on their preferences, and communicate securely with potential room exchange partners. The portal offers a seamless and intuitive solution to facilitate the search.
 
-## Contributing
 
-We welcome contributions to Room-Exchange! To contribute to this project, please follow these guidelines:
 
-1. Fork the repository
-2. Create a new branch for your feature or bug fix
-3. Make your changes and ensure they are properly tested
-4. Commit your changes with clear commit messages
-5. Push your changes to your fork
-6. Open a pull request to merge your changes into the main branch of the original repository
+## Methodology
 
-## License
+The Room-Exchange-System employs a user-friendly interface to allow users to create listings for their rooms, browse available listings, and communicate with potential room exchange partners. The portal utilizes a combination of-
 
-This project is licensed under-
+- API Development
 
-## Credits
+- Version control system- Git/GitHub
 
-- This project utilizes the following technologies:
-- Node.js
-- Express.js
-- Mysql
+- Front-end Development
+
+- Database Connectivity
+ 
+
+## Implementation
+
+The Room-Exchange-System is implemented using the following technologies:
+
+- Backend:
+  - Node.js
+  - Express.js
+  - Mysql
+
+- Frontend:
+  - HTML
+  - CSS 
+  - Javascript
+
+The back end handles user authentication, listing management, and messaging/ and room selection functionalities, while the front end provides an intuitive user interface for interacting with the portal.
+
+## Results
+
+Through the Room-Exchange-System, users can successfully find room exchange partners, facilitating seamless transitions between different rooms. 
+
+## Conclusion
+
+The Room-Exchange-System could prove to be a valuable tool for individuals seeking to exchange rooms. By simplifying the process of finding room exchange opportunities and facilitating communication between users, the portal could greatly benefit the students.
+
+## References
+
+1. Reference 1: Description or link to the reference.
+2. Reference 2: Description or link to the reference.
+
+
+## Mentors and Mentees
+
+### Mentor - 
+1. 
+### Mentees
+1. 
+2. 
+3. 
+
+## Features
 
 
 
