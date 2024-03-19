@@ -1,7 +1,9 @@
 const express = require('express')
+const emailNotification = require('../emailNotification');
 const router = express.Router();
 const connection = require('../database');
-
+const subject = "Your Room Swap Request has been accepted"
+roomResult = []
 router.get('/', (req, res) => {
     const user = req.session.user;
     const email = user['email'];
@@ -230,6 +232,21 @@ router.post('/acceptSwapRequest',(req,res)=>{
                     );
                 }
             });
+
+            
+            const query7 = `select * from ROOM R join STUDENT S where R.ROOM_ID = S.ROOM_ID AND R.ROOM_ID = ? `
+            
+            connection.query(query7,[reqToRoomId],(err,results)=>{
+                if(err){
+                    return connection.rollback(()=>{
+                        console.error('Error deleting rooms:',err);
+                        res.status(500).send('Error accepting swap request');
+                    }
+                    );
+                }
+                roomResult = results[0];
+                emailNotification.sendEmail(subject,JSON.stringify(roomResult));
+            });
         }
         );
         connection.commit((err)=>{
@@ -250,16 +267,30 @@ router.post('/acceptSwapRequest',(req,res)=>{
 
 router.post('/rejectSwapRequest',(req,res)=>{
     const swapRequestId=req.body['requestId'];
-    console.log(swapRequestId);
+    const subject = "Your Room Swap Request for the following Room has been Rejected";
     const query=`UPDATE SWAP_REQUEST SET CONFIRM_AVAILABILITY = 'REJECTED' WHERE REQUEST_ID = ?`;
-    connection.query(query,[swapRequestId],(err,results)=>{
-        if(err){
-            console.error('Error rejecting swap request:',err);
+    const query2 = `select * from ROOM R where R.ROOM_ID = (select REQ_TO_ROOM_ID from    SWAP_REQUEST where REQUEST_ID = ?)`
+    connection.query(query, [swapRequestId], (err, results) => {
+        if (err) {
+          // Handle error from the first query
+          console.error('Error executing query:', err);
+          res.status(500).send('Error rejecting swap request');
+          return;
+        }
+      
+        connection.query(query2, [swapRequestId], (err, results2) => {
+          if (err) {
+            console.error('Error executing query2:', err);
             res.status(500).send('Error rejecting swap request');
             return;
-        }
-        res.status(200).send('Swap request rejected');
+          }
+          
+          emailNotification.sendEmail(subject, JSON.stringify(results2[0]));
+          res.status(200).send('Swap Request rejected');
+        });
+      
     });
+      
 }
 );
 

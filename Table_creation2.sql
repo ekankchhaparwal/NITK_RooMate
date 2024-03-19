@@ -1,5 +1,9 @@
 /*Table: ROOM */
+
+
+
 create database RoomExchange;
+
 use  RoomExchange;
 
 CREATE TABLE ROOM (
@@ -22,17 +26,15 @@ END$$
 DELIMITER ;
 
 
-/*comment on table "ROOM" is 'Table stores information about all the physical rooms';*/
 
-/*Table: AUTHORIZATION */
 
 CREATE TABLE AUTHORIZATION (
     EMAIL     VARCHAR(320) NOT NULL,
     PASSCODE VARCHAR(25) NOT NULL,
     CONSTRAINT AUTH_PK PRIMARY KEY (EMAIL)
 );
-select * from AUTHORIZATION;
-/*Table: STUDENT*/
+
+
 
 CREATE TABLE STUDENT (
     NAME                      VARCHAR(250) NOT NULL,
@@ -55,8 +57,9 @@ CREATE TABLE STUDENT (
 
 comment on column "STUDENT"."ROOM_SWAP_AVAILABLE_FLAG" is 'Yes or No’. Default is Y */
 
+-- select * from ROOM;
+-- select * from ROOM R join STUDENT S where R.ROOM_ID = S.ROOM_ID AND R.ROOM_ID = 1000;
 
-/*Table: "AVAILABLE_ROOM"*/
 
 CREATE TABLE AVAILABLE_ROOM (
     ROOM_ID     INT NOT NULL,
@@ -67,6 +70,9 @@ CREATE TABLE AVAILABLE_ROOM (
     CONSTRAINT AVAIL_STUD_FK FOREIGN KEY (STUDENT_ID) REFERENCES STUDENT (STUDENT_ID),
     CONSTRAINT AVAILABLE_ROOM_PK PRIMARY KEY (ROOM_ID, STUDENT_ID)
 );
+
+/*comment on table "AVAILABLE_ROOM" is 'Available Room table tracks the rooms that are currently available for new allocations or swaps';*/
+
 
 
 
@@ -95,3 +101,7 @@ BEGIN
 END $$ 
 
 DELIMITER ;
+
+select * from ROOM R join STUDENT S where R.ROOM_ID = S.ROOM_ID AND R.ROOM_ID = 1000;
+
+
