@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
             AVAILABLE_ROOM ON ROOM.ROOM_ID = AVAILABLE_ROOM.ROOM_ID 
         WHERE 
             STUDENT.GENDER = (SELECT GENDER FROM STUDENT WHERE EMAIL = ?) AND 
-            AND STUDENT.EMAIL <> ? AND
+            STUDENT.EMAIL <> ? AND
             AVAILABLE_ROOM.ROOM_STATUS = 'Y'`;
 
     let filterParams = [email,email];
