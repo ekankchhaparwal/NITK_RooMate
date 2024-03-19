@@ -62,12 +62,6 @@ Through the Room-Exchange-System, users can successfully find room exchange part
 
 The Room-Exchange-System could prove to be a valuable tool for individuals seeking to exchange rooms. By simplifying the process of finding room exchange opportunities and facilitating communication between users, the portal could greatly benefit the students.
 
-## References
-
-1. Reference 1: Description or link to the reference.
-2. Reference 2: Description or link to the reference.
-
-
 ## Mentors and Mentees
 
 ### Mentor - 
