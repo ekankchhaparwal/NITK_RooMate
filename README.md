@@ -2,9 +2,10 @@
 
 ## Acknowledgements
 
-- [Name of Contributor](link-to-profile) - Description of their contribution.
-- [Name of Contributor](link-to-profile) - ''
-- [Name of Contributor](link-to-profile) - ''
+- [Ekank Chhaparwal]([link-to-profile](https://github.com/ekankchhaparwal)) 
+- [Shiven ]([link-to-profile](https://github.com/ShivenDuttSharma1))
+- [Anish Tripati]([link-to-profile](https://github.com/Anish-Tripathi))
+- [Srivatsan Suresh]([link-to-profile](https://github.com/srivatsan-suresh))
 
 Last but not least, we want to thank the IET community for their encouragement, support, and understanding during the hours spent on the project.
 
@@ -20,7 +21,7 @@ The Room-Exchange-System is a dynamic and user-friendly web application designed
 
 Finding suitable accommodation can be a daunting task, especially when faced with the challenges of compatibility with potential roommates. Traditional methods of searching for roommates or listing available rooms often lack the flexibility and efficiency required to meet the needs of individuals seeking room exchanges.
 
-Our portal addresses these challenges by providing a centralized platform where users can create detailed room listings, browse available listings based on their preferences, and communicate securely with potential room exchange partners. The portal offers a seamless and intuitive solution to facilitate the search.
+Our portal addresses these challenges by providing a centralized platform where users can create detailed room listings, browse available listings based on their preferences, and communicate with potential room exchange partners. The portal offers a seamless and intuitive solution to facilitate the search.
 
 
 
@@ -70,13 +71,13 @@ The Room-Exchange-System could prove to be a valuable tool for individuals seeki
 ## Mentors and Mentees
 
 ### Mentor - 
-1. 
+1. Ekank Chhaparwal
 ### Mentees
-1. 
-2. 
-3. 
+1. Srivatsan Suresh
+2. Anish Tripati
+3. Shiven
 
-## Features
+
 
 
 
