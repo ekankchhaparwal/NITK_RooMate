@@ -7,30 +7,33 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../css/availableRooms.css" />
     <title>Room Exchange| NITK</title>
     <script src="../js/availableRooms.js"></script>
   </head>
+  <style>
+    .home-icon {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+      font-size: 40px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 24px;
+    }
+
+    .home-icon:hover {
+      color: #cccccc;
+    }
+  </style>
   <body>
-    <nav>
-      <div class="nav__bar">
-        <div class="nav__header">
-          <div class="logo nav__logo">
-            <img src="https://yt3.ggpht.com/-QX4o89WhsLs/AAAAAAAAAAI/AAAAAAAAAAA/MT-DJJSnjAc/s900-c-k-no/photo.jpg"
-                alt="error loading image" height="50px" width="50px">
-          </div>
-          <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-line"></i>
-          </div>
-        </div>
-        
-        <div class = "log">
-            <ul class = flex>
-                <span><i class="ri-logout-box-r-line"></i></span>
-                <li class = "hover-link nav-item" id = "logout" > Logout</li> 
-            </ul>
-      </div>
-    </nav>
+    <a href="MainPage.html" class="home-icon">
+      <span class="material-icons " style="font-size: 40px;">
+        home
+        </span>
+    </a>
     <section class="booking" id="room-status">
         <div class="section__container booking__container">
           <form action="/" id="booking-form">

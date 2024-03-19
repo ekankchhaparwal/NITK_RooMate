@@ -7,10 +7,13 @@
     <script src="../js/MainPage.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/MainPage.css" />
-    <title>Room Exchange| NITK</title>
+    <title>Room Exchange </title>
   </head>
   <body>
     <nav>
+      <button id="logout" style="margin-top: 10px; background-color: red
+      ; color: #ffffff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; float: right;">Logout</button>
+
       <div class="nav__bar">
         <div class="nav__header">
           <div class="logo nav__logo">
@@ -58,6 +61,7 @@
             <span class="icon-button__badge"></span>
           </button>
         </a>
+        
       </div>
     </nav>
 
@@ -218,6 +222,26 @@
   .catch(error => {
       console.error('Error:', error);
   });
+
+  const logoutButton = document.getElementById('logout');
+
+  logoutButton.addEventListener('click', async () => {
+    try {
+      const response = await fetch('http://localhost:3000/routes/authorization/logout', {
+        method: 'GET',
+      });
+
+      if (response.ok) {
+        window.location.href = 'SignUpPage.html';
+      } else {
+        alert('Logout failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+      alert('An error occurred during logout. Please try again later.');
+    }
+  });
+
   </script>
   </body>
 </html>

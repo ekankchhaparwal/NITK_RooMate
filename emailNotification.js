@@ -9,13 +9,14 @@ let transporter = nodemailer.createTransport({
 });
 
 
+
 function sendEmail(subject, text) {
     console.log(subject);
     console.log(text);
     console.log(123);
     const mailOptions = {
         from: 'ekankm2@gmail.com',
-        to: 'ekank1410@gmail.com',
+        to: 'ekankmaheshwari.211it019@nitk.edu.in',
         subject: subject,
         text: text
     };
