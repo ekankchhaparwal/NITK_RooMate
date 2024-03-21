@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 const connection = require('../database');
 
+
 router.post('/sendRequestToStudent', (req, res) => {
     const REQ_STUDENT_EMAIL = req.session.user['email'];
     const REQ_TO_STUDENT  = req.body;
@@ -37,6 +38,45 @@ router.post('/sendRequestToStudent', (req, res) => {
     );
   });
   
+
+  router.post('/checkSwapRequestIsValid', (req, res) => {
+    const REQ_STUDENT_EMAIL = req.session.user['email'];
+    const REQ_TO_STUDENT = req.body;
+
+    connection.query(
+        'SELECT * FROM STUDENT WHERE EMAIL = ?',
+        [REQ_STUDENT_EMAIL],
+        (error, requestingStudentRows) => {
+            if (error) {
+                console.error('Error fetching requesting student:', error);
+                return res.status(500).json({ error: 'Internal server error' });
+            }
+
+            if (requestingStudentRows.length === 0) {
+                return res.status(404).json({ error: 'Requesting student not found' });
+            }
+
+            const requestingStudent = requestingStudentRows[0];
+
+            connection.query(
+                'SELECT * FROM SWAP_REQUEST WHERE REQ_STUDENT_ID = ? AND REQ_TO_STUDENT_ID = ?',
+                [requestingStudent.STUDENT_ID, REQ_TO_STUDENT['STUDENT_ID']],
+                (queryError, existingRequests) => {
+                    if (queryError) {
+                        console.error('Error checking swap request:', queryError);
+                        return res.status(500).json({ error: 'Internal server error' });
+                    }
+
+                    if (existingRequests.length > 0) {
+                        return res.status(200).json({ exists: true, message: 'Swap request already exists' });
+                    } else {
+                        return res.status(200).json({ exists: false, message: 'Swap request does not exist' });
+                    }
+                }
+            );
+        }
+    );
+});
 
   router.post('/accept',(req,res)=>{
     const swapRequestId=req.body.swapRequestId;

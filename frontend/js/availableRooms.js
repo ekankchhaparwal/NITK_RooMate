@@ -91,32 +91,50 @@ function createStudentCard(student) {
 
 function sendRoomSwapRequest(student) {
   const check = confirm('Are you sure you want to request a room swap?');
-  console.log(student);
-  console.log('hello');
-  if(check) {
-    fetch('http://localhost:3000/routes/swapRequest/sendRequestToStudent', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(student),
-  })
-  .then(response => {
-      if (response.ok) {
-          // Show success message
-          alert('Request for room swap has been successfully sent to the student.');
-      } else {
-          // Handle error response
-          alert('Error sending room swap request. Please try again later.');
-      }
-  })
-  .catch(error => {
-      console.error('Error:', error);
-      alert('Error sending room swap request. Please try again later.');
-  });
+  if (check) {
+      // Check if swap request already exists
+      fetch('http://localhost:3000/routes/swapRequest/checkSwapRequestIsValid', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(student),
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.exists) {
+              alert('A swap request already exists for this student. Cannot send duplicate request.');
+          } else {
+              // If no existing swap request, proceed to send new request
+              fetch('http://localhost:3000/routes/swapRequest/sendRequestToStudent', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(student),
+              })
+              .then(response => {
+                  if (response.ok) {
+                      // Show success message
+                      alert('Request for room swap has been successfully sent to the student.');
+                  } else {
+                      // Handle error response
+                      alert('Error sending room swap request. Please try again later.');
+                  }
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+                  alert('Error sending room swap request. Please try again later.');
+              });
+          }
+      })
+      .catch(error => {
+          console.error('Error checking swap request:', error);
+          alert('Error checking swap request. Please try again later.');
+      });
   }
-  
 }
+
 
 
 function renderStudentCards(apiResponse) {
