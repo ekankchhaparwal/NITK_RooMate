@@ -122,6 +122,29 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/countSwapRequests', (req, res) => {
+    const REQ_STUDENT_EMAIL = req.session.user['email'];
+
+    connection.query(
+        'SELECT COUNT(*) AS swapRequestsCount FROM SWAP_REQUEST WHERE REQ_TO_STUDENT_ID = (SELECT STUDENT_ID FROM STUDENT WHERE EMAIL = ?) AND CONFIRM_AVAILABILITY = "PENDING" ',
+        [REQ_STUDENT_EMAIL],
+        (error, result) => {
+            if (error) {
+                console.error('Error fetching swap requests count:', error);
+                return res.status(500).json({ error: 'Internal server error' });
+            }
+
+            if (result.length === 0) {
+                return res.status(404).json({ error: 'No swap requests found' });
+            }
+
+            const swapRequestsCount = result[0].swapRequestsCount;
+            res.status(200).json({ count: swapRequestsCount });
+        }
+    );
+});
+
+
 router.get('/swapRequests',(req,res)=>{
     const email=req.session.user['email'];
     const query = `

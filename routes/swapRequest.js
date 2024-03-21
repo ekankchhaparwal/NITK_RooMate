@@ -36,10 +36,10 @@ router.post('/sendRequestToStudent', (req, res) => {
         );
       }
     );
-  });
+});
   
 
-  router.post('/checkSwapRequestIsValid', (req, res) => {
+router.post('/checkSwapRequestIsValid', (req, res) => {
     const REQ_STUDENT_EMAIL = req.session.user['email'];
     const REQ_TO_STUDENT = req.body;
 
