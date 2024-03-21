@@ -59,6 +59,7 @@ router.get('/', (req, res) => {
     });
 });
 
+
 router.post('/', (req, res) => {
     console.log(req.body);
     const user = req.session.user;
@@ -73,6 +74,7 @@ router.post('/', (req, res) => {
             STUDENT.GENDER, 
             ROOM.BUILDING_NAME, 
             ROOM.FLOOR_NO, 
+            ROOM.ROOM_ID,
             ROOM.WING, 
             ROOM.ROOM_NUMBER
         FROM 

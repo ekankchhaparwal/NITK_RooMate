@@ -6,20 +6,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const button = document.getElementById("check-availability-btn");
 
     button.addEventListener("click", function() {
-      // Gather form data
       const formDataObject = {};
+      formDataObject["building_name"] = document.querySelector("#booking-form input[placeholder='building_name']").value;
+      formDataObject["floor"] = document.querySelector("#booking-form input[placeholder='floor']").value;
+      formDataObject["room_number"] = document.querySelector("#booking-form input[placeholder='Room number']").value;
+      formDataObject["wing"] = document.querySelector("#booking-form input[placeholder='wing']").value;
 
-    // Access input fields directly and construct JSON object
-    formDataObject["building_name"] = document.querySelector("#booking-form input[placeholder='building_name']").value;
-    formDataObject["floor"] = document.querySelector("#booking-form input[placeholder='floor']").value;
-    formDataObject["room_number"] = document.querySelector("#booking-form input[placeholder='Room number']").value;
-    formDataObject["wing"] = document.querySelector("#booking-form input[placeholder='wing']").value;
-
-    // Check if there is any data to send
-    if (Object.values(formDataObject).every(value => value.trim() === "")) {
-      alert("Please fill out at least one field");
-      return;
-    }
+      if (Object.values(formDataObject).every(value => value.trim() === "")) {
+        alert("Please fill out at least one field");
+        return;
+      }
 
       console.log(JSON.stringify(formDataObject))
       // Send data to API
@@ -42,10 +38,9 @@ document.addEventListener("DOMContentLoaded", function() {
       })
       .catch(error => {
         console.error("Error:", error);
-        // Handle error
       });
     });
-  });
+});
 
 function createStudentCard(student) {
     var card = document.createElement('div');
@@ -152,7 +147,7 @@ function fetchData() {
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
-        });
+    });
 }
 
 fetchData();
