@@ -4,7 +4,7 @@
 
 - [Ekank Chhaparwal]([link-to-profile](https://github.com/ekankchhaparwal)) 
 - [Shiven ]([link-to-profile](https://github.com/ShivenDuttSharma1))
-- [Anish Tripati]([link-to-profile](https://github.com/Anish-Tripathi))
+- [Anish Tripathi]([link-to-profile](https://github.com/Anish-Tripathi))
 - [Srivatsan Suresh]([link-to-profile](https://github.com/srivatsan-suresh))
 
 Last but not least, we want to thank the IET community for their encouragement, support, and understanding during the hours spent on the project.
